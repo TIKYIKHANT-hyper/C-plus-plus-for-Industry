@@ -1,35 +1,29 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
-uint32_t changeEndianess(uint32_t value);
-int main() {
-    cout << "Hello, World!" << endl;
-    uint32_t littleEndian = 0x0A0B0C0D;
-    uint32_t bigEndian = changeEndianess(littleEndian);
-    printf("%X",bigEndian);
-    return 0;
-}
-
-uint32_t changeEndianess(uint32_t value){
-    uint32_t ans = 0x00000000;
-    uint32_t temp = 0x00000000;
-    temp = value & 0x000000FF;
-    temp = temp << 24;
-    ans = ans | temp;
-
-    temp = 0x00000000;
-    temp = value & 0x0000FF00;
-    temp = temp  << 8;
-    ans = ans | temp;
-
-    temp = 0x00000000;
-    temp = value & 0x00FF0000;
-    temp = temp >> 8;
-    ans = ans | temp;
-
-    temp = 0x00000000;
-    temp = value & 0xFF000000;
-    temp = temp >> 24;
-    ans = ans | temp;
-
-    return ans;
+int main(){
+    ofstream fo;
+    fo.open("d:\\test.txt",ios::out);
+    if(fo.fail()){
+        cout<<"Error cannot open the file"<<endl;
+        return 1;
+    }
+    fo<<"I put the new forgis on the jeep"<<endl;
+    fo<<"I trap until the, bloody bottoms is underneath"<<endl;
+    ifstream fi("d:\\test.txt",ios::in);
+    if(fi.fail()) {
+        cout << "Error cannot open the file" << endl;
+        return 1;
+    }
+    string newarr = "";
+    string post = "";
+    while(!fi.eof()) {
+        fi >> newarr;
+        post += newarr;
+        post += "\n";
+    }
+    cout<<post<<endl;
+    fi.close();
+    fo.close();
 }

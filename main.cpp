@@ -1,29 +1,12 @@
-#include <iostream>
-#include <fstream>
-#include <string>
+#include<iostream>
+#include<iomanip>
+#include<conio.h>
 using namespace std;
 int main(){
-    ofstream fo;
-    fo.open("d:\\test.txt",ios::out);
-    if(fo.fail()){
-        cout<<"Error cannot open the file"<<endl;
-        return 1;
-    }
-    fo<<"I put the new forgis on the jeep"<<endl;
-    fo<<"I trap until the, bloody bottoms is underneath"<<endl;
-    ifstream fi("d:\\test.txt",ios::in);
-    if(fi.fail()) {
-        cout << "Error cannot open the file" << endl;
-        return 1;
-    }
-    string newarr = "";
-    string post = "";
-    while(!fi.eof()) {
-        fi >> newarr;
-        post += newarr;
-        post += "\n";
-    }
-    cout<<post<<endl;
-    fi.close();
-    fo.close();
+    long pop1 = 2425785,pop2 = 47,pop3 = 9761;
+    cout<<setw(8)<<"Location"<<setw(12)<<"Population"<<endl;
+    cout<<setw(8)<<"Portcity"<<setw(12)<<pop1<<endl;
+    cout<<setw(8)<<"Hightown"<<setw(12)<<pop2<<endl;
+    cout<<setw(8)<<"Lowville"<<setw(12)<<pop3<<endl;
+    return 0;
 }
